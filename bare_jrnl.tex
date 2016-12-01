@@ -1,0 +1,1061 @@
+
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE!
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+\usepackage{amssymb}
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+   \graphicspath{{./figure/}{./}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+   \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+   \graphicspath{{./figure/}{./}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+   \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+\usepackage{booktabs}
+\usepackage{multirow}
+\renewcommand{\multirowsetup}{\centering}
+
+\usepackage{amsmath}
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Correlated Topic Vector for Scene Classification}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{Pengxu~Wei,~\IEEEmembership{}
+        Fei~Qin,~\IEEEmembership{}
+        Fang~Wan,~\IEEEmembership{}
+        Yi~Zhu,~\IEEEmembership{}
+        Jianbin~Jiao,~\IEEEmembership{Member,~IEEE}
+        and~Qixiang~Ye,~\IEEEmembership{Senior~Member,~IEEE}
+%        John~Doe,~\IEEEmembership{Fellow,~OSA,}
+%       and~Jane~Doe,~\IEEEmembership{Life~Fellow,~IEEE}% <-this % stops a space
+\thanks{The authors are with the School of Electronic, Electrical and Communication Engineering, University of Chinese Academy of Sciences, Beijing,
+101408 China (e-mail: weipengxu11@mails.ucas.ac.cn; fqin1982@ucas.ac.cn; wanfang13@mails.ucas.ac.cn; zhuyi215@mails.ucas.ac.cn; jiaojb@ucas.ac.cn; qxye@ucas.ac.cn).}% <-this % stops a space
+}
+%\thanks{}% <-this % stops a space
+%\thanks{Manuscript received XXXX XX, XXXX; revised XXXX XX, XXXX.}}
+
+% note the % following the last \IEEEmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+%！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+%\markboth{Journal of \LaTeX\ Class Files,~Vol.~XX, No.~XX, XXXXXX~XXXX}%
+%{Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Journals}
+%！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+Scene images usually involve semantic correlations, particularly when considering large-scale image datasets. This paper proposes a novel generative image representation, Correlated Topic Vector (CTV), to model such semantic correlations. Oriented from correlated topic model, CTV intends to naturally utilize the correlations among topics which are seldom considered into the conventional feature encoding, e.g. Fisher Vector, but do exist in scene images. It is expected that the involvement of correlations may increase the discriminative capability of learned generative models and consequently improve the recognition accuracy. Incorporated with Fisher Kernel method, CTV inherits the advantages of Fisher Vector. The contributions to topics/themes of visual words have been further employed by incorporating the Fisher Kernel framework to indicate the differences among scenes. Combined with the deep CNN features and Gibbs sampling solution, CTV shows great potential when processing large-scale and complex image datasets. Experiments on two scene image datasets demonstrate that CTV improves significantly the deep CNN features, and outperforms existing Fisher Kernel based features.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+Generative feature learning, Correlated Topic Vector, semantic correlation, Fisher Kernel.
+\end{IEEEkeywords}
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+\section{Introduction} \label{Sec:Introduction}
+\IEEEPARstart{S}{cene} classification has been widely explored, promoting related computer vision research topics including object recognition \cite{torralba2003contextual, torralba2004contextual}, image retrieval \cite{wang2001simplicity, chang2003cbsa, vailaya1999content}, and intelligent robot navigation \cite{siagian2005gist, manduchi2005obstacle}. A scene image is composed of several semantic entities (e.g. \emph{sky}, \emph{rock}, \emph{street}, \emph{car}). These entities are often organized in unpredictable layouts \cite{quelhas2005modeling, galleguillos2008object} and could be shared with multiple categories, which invite intra-class variability and extra-class similarity for scene recognition. Scene labels (e.g. \emph{coast}, \emph{village}, \emph{coast}, \emph{inside city}) are equivalently the overall cognition and high-level abstract of scene images, which are difficult to be captured using low-level visual features. These factors make scene image recognition much more challenging than object-centric image classification.
+%A scene image is composed of several semantic entities (e.g. \emph{sky}, \emph{rock}, \emph{street}, \emph{car}), which are often organized in unpredictable layouts \cite{quelhas2005modeling, galleguillos2008object}. Its scene label (e.g. \emph{coast}, \emph{village}, \emph{coast}, \emph{inside city}) is equivalently the overall cognition and high-level abstract of the image. The wide range of illuminations and scales also increase the difficulty of scene recognition. All these factors aggravate the intra-class variability and extra-class similarity of scene images, which makes scene classification more challenging than object-centric image classification.
+
+The conventional visual recognition method extracts local visual descriptors, and encodes them into a global representation of one image.
+Many efforts on this strategy for scene recognition focus on two problems: (1) how to characterize semantics (commonly known as topics or themes) explicitly or implicitly, and (2) how to encode superior scene representation based on these semantics. The first class of semantics consists of object-centric approaches that model pre-defined explicit semantics, e.g. objects (\emph{sky}, \emph{water}, \emph{grass} and so on) or scene categories (\emph{village}, \emph{forest}, \emph{kitchen} and so on). It annotates regions with corresponding explicit themes and trains specific theme classifiers. One popular strategy of theme labeling leverages a group of object detectors pre-trained on available object-centric image datasets \cite{li2014object}. The other one utilizes given scene categories and assumes that a specific scene category is shared for all the patches of one image \cite{kwitt2012scene}. These approaches rely on theme performance heavily since they attempt to independently discover potential themes.
+The second class of semantics devotes to scene-centric representation \cite{fei2005bayesian, bosch2006scene, bosch2008scene, rasiwasia2012holistic}. It is learned from an entire image and generates its holistic description with the aid of implicit themes. And it works without explicit image segmentation, manual theme annotation or extensive object detections.
+
+The scene-centric representation is conventionally built on Bag-of-Words (BoW) which encodes an image as an orderless collection of local descriptors. BoW takes cluster centers resulted from $k$-means as semantics and encodes semantic histograms as features. Without any doubt, the lossy BoW quantization procession of local descriptors is bound to induce word ambiguity \cite{van2010visual} including synonymy (different visual words may represent the same semantic) and polysemy (the same visual word may represent different semantics in different contexts). This problem is demonstrated in Fig. \ref{Fig:scene}. As shown in its first row, BoW features present significant differences between the first two images even though both images belong to the \emph{village} scene, which indicates its limited capacity for intra-class variance. Generative models from statistical text literature, e.g. probabilistic Latent Semantic Analysis (pLSA) \cite{hofmann1999probabilistic} and Latent Dirichlet Allocation (LDA) \cite{blei2003latent}, improve BoW by dealing with the ambiguity problem \cite{van2010visual}, and introduce intermediate latent topic features which are scene-centric \cite{fei2005bayesian, bosch2006scene, bosch2008scene}. In the third row of Fig. \ref{Fig:scene}, it is observed that a group of themes, \emph{sky}-\emph{rock}-\emph{house}-\emph{tree}, generally appear together in the \emph{village} scene. %while \emph{sky}-\emph{tree}-\emph{water} often appear together in the \emph{coast} scene, and it is also shown that several themes of these two ``village'' images present higher probability from the illustration of theme distribution shown in its forth row. But this case is different from the ``coast'' scene image.
+Obviously, a scene exhibits a strong semantic/theme correlation property, and more importantly this property is specific for a scene category distinguishing itself from others. Unfortunately, such correlation is ignored in most existing work besides BoW. For example, LDA imposes Dirichlet distribution prior on the topic proportions \cite{blei2003latent}, which poorly assumes that themes/topics are independent from each other.
+%So induced latent semantic representations are unable to capture the property that several correlated themes often appear together for a specific scene class.
+%This limitation stems from the independence assumptions implicit in the Dirichlet distribution prior on the topic proportions.
+%Moreover, the ``sky''-``tree'' relationship exists in both scenes.
+
+In this paper, we propose a new feature representation, named Correlated Topic Vector (CTV), that utilizes the Correlated Topic Model (CTM) \cite{blei2006correlated, blei2007correction} to capture the correlations between themes as a latent semantic representation. CTM replaces the Dirichlet distribution prior of the classical Latent Dirichlet Allocation model with a more flexible logistic normal distribution \cite{aitchison1986statistical} that incorporates a covariance measurement among topics. This makes it possible to describe more realistically the fact that the presence of one latent topic may be correlated with the presence of another. However, the latent semantic representation derived from CTM with the conventional way that just considers the latent topic distributions \cite{bosch2006scene, bosch2008scene}, fails to perform well consistently. This similar case happens to other topic models (e.g. pLSA and LDA) \cite{quelhas2007thousand}. Besides, alone with the significantly increasing categories of scene images, topic models including CTM tend to fail to describe the intra-class variability and extra-class similarity. This problem is aggravated when using latent topic distributions as their unsupervised learning obscures differences among scene categories.
+
+The proposed CTV further explores the contributions of low level visual words to the generating processes of middle level topics from the information geometry view in essence. This is different from BoW and latent semantic representations since BoW depends on visual word co-occurrence counts and latent semantic representations focus on topic distributions.
+For two images from different categories, regions with similar appearances tend to follow the same visual word and limited topics hold insignificant differences for recognition tasks. %It is necessary to the generating process of topics based on words. Topic proportions vary across images with different changing trends. Given one topic, visual words are drawn with respect to a multinomial distribution. For different topics, visual words embody different statistical properties with respect to different multinomial distributions.
+Built on Fisher Kernel \cite{zhou2014learning}, the CTV takes these properties into account, combining the benefits of generative and discriminative approaches.
+%Unlike the literature \cite{perronnin2007fisher} that local patch descriptors across all images are assumed to be independently and identically (i.i.d.) sampled from a single Gaussian Mixture Model (GMM), hyper-parameters of the generative model parameterize the special-image level and image level probability distribution.
+
+To demonstrate the up to date performance, the proposed CTV is implemented on Convolutional Neural Network (CNN) \cite{krizhevsky2012imagenet} features. For scene recognition, it is demonstrated that the features extracted from fully connected layer of CNN trained on ImageNet \cite{deng2009imagenet} show a clear semantic clustering, and the latter layers learn semantic features \cite{donahue2013decaf}. Therefore, it can be utilized as an alternative representation without any object detection efforts. It is an intuition that regarding CNN feature of the hidden fully connected layer as a learnt soft-assignment word histogram for a whole image as well as avoiding to build a vocabulary relying on CNN as local descriptors.
+
+To summarize, this work has the following contributions:
+
+1.	We propose a new image representation, Corrected Topic Vector, which can capture the correlations among semantic topics of images.
+
+2.	We derive the formal expression of CTV in Fisher Kernel space to enhance discriminative capacity.
+
+3.	We implement CTV with CNN features and efficient Gibbs sampling solution to large-scale datasets.
+
+In the remainder of the paper, we review related work in Section \ref{Sec:RelatedWork} and discuss the detail of correlated topic vector in Section \ref{Sec:Methodology}. Experimental results are provided in Section \ref{Sec:Experiments}. We conclude in Section \ref{Sec:Conclusion}.
+% figure1
+\begin{figure}
+\begin{center}
+\includegraphics [width=0.48\textwidth] {figure1-scene-v3(green)-4.eps}
+\caption{Examples of \emph{village} and \emph{coast} scene images. In the first row, histograms of visual words are shown; Themes are provided for three images, among which two images of scene \emph{village} and one image of scene \emph{coast} present in the second row; Their corresponding theme probability distributions are shown in the fourth row.}
+\label{Fig:scene}
+\end{center}
+\end{figure}
+
+% section 2 Related work
+\section{Related Work} \label{Sec:RelatedWork}
+Inspired from text categorization\cite{joachims1998text}, BoW \cite{csurka2004visual} has been widely used for image recognition. It characterizes an image with visual word co-occurrence. Hard word assignments and histogram encoding induce the loss of image spatial information and the semantic ambiguity for each word, let alone semantic correlation that is a noticeable attribute for scene recognition. The intermediate ``theme'' or ``semantic'' representation for scene images is an extension of BoW and attempts to fill the semantic gap between the low-level image features and the high-level semantic concepts.
+
+Exploiting explicit themes assigned directly to patches or regions suffers from theme annotation efforts or unreliable detection results of diverse objects. L. Li \emph{et al.} \cite{li2010object, li2014object} propose ``Object Bank'' (OB) that deploys a large number of object detectors at multiple scales to obtain the probability of objects appearing at each pixel. It detects 177 categories of objects at 12 scales and 21 spatial pyramid grids. It is hard to generalize OB to large-scale scene image sets such as SUN 397 \cite{xiao2014sun} or Places 205 \cite{zhou2014learning}. Besides, L. Li \emph{et al.} manually illustrate the identities and semantic relations among 177 objects carefully selected from 1000 objects, however these relations are not employed for scene recognition.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure2
+\begin{figure}
+\begin{center}
+\includegraphics [width=0.48\textwidth] {figure2-flowchart-font-v3.eps}
+\caption{Correlated Topic Model learning and Correlated Topic Vector encoding.}
+\label{Fig:flowchart}
+\end{center}
+\end{figure}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some works are denoted to Fisher Kernel \cite{jaakkola1999exploiting} to improve BoW. Tommi S. Jaakkola and David Haussler \cite{aitchison1986statistical} provide a formulation of Fisher Kernel for classification tasks. Florent Perronnin and Christopher Dance introduce Fisher Kernel derived from Gaussian Mixture Models (GMM) for the image representation. The resulted Fisher vectors benefit from powerful local feature descriptors \cite{perronnin2007fisher}. VLAD (Vector of Locally Aggregated Descriptors) \cite{jegou2010aggregating} improves BoW to produce a compact representation. Fisher kernels have already been applied to the problem of image categorization built on generative models \cite{holub2005combining}.
+
+Dirichlet-based GMM Fisher Kernel \cite{kobayashi2014dirichlet} is applied as a way of feature transformation for image classification, assuming that ${L_1}$-normalized histogram-based local descriptors could be modeled by Dirichlet distribution.
+
+CNN features recently achieved spectacular results on the ImageNet object recognition challenge. Their success has encouraged the community to use CNN feature embedding for scene classification, to replace the conventional SIFT-FV architecture. For example, Gong \emph{et al.} represent a scene image as a collection of fully connected layer activations extracted from local patches and build VLAD embedding for image recognition. M. Dixit \emph{et al.} incorporate semantics into the Fisher Kernel framework. They extract CNN features of local patches and consider them as Semantic Multinomial (SMN) descriptors. With the help of Dirichlet Mixture Models (DMM), the DMM FV is induced as a more natural embedding than GMM FV. When local semantic descriptors are modeled as a multinomial distribution, the DMM FV is induced as a more natural embedding than GMM FV. Besides, the natural parameterization transformation alleviates highly non-Euclidean property of SMN descriptors. A semantic FV is then computed as a Gaussian Mixture FV in the space of the natural parameters.
+
+A considerable number of works built on Fisher Kernel framework for image recognition have made great strides, however they are generally assumed that patches of all the images are independently and identically drawn from the involved generative models. Obviously, the independent and identically distributed (i.i.d.) assumption violates intrinsic image characterics, and thus cannot always hold. In addition, semantic correlation is seldom considered in existing works. Considering an image as an unordered set of regions, R. G. Cinbis \emph{et al.} \cite{cinbis2012image, cinbis2015approximate} utilize the Dirichlet prior distribution to parameterize the variables varying across images. They consider models, e.g. Latent Dirichlet Allocation model and latent Gaussian Mixture Models, which capture the dependencies among local image regions. For latent GMM, they treat the parameters of GMM as latent variables with prior distributions learned from data, and apply the Fisher Kernel principle by taking the gradient of the log-likelihood of the observed data with respect to the hyper-parameters. These hyper-parameters control the priors on the latent model parameters. Despite of the wide exploration of latent semantic in these works, semantic correlation remains not considered.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% table 1
+\begin{table}[tbp]
+    \centering
+    \caption{The Generating Process of Image $d$.}
+    \label{Table:table_ctm}
+    \begin{tabular}{p{8cm}{l}}
+        \toprule
+            1. Draw ${\eta _d}|\{ \mu ,\Sigma \} \sim {\cal N}\{ \mu ,\Sigma \}$, where $\mu$ and $\Sigma$ are parameters, mean and covariance.\\
+        \hline %\midrule
+            2. For each word $n \in \{ 1,...,{N_d}\}$ :\\
+            \setlength{\hangindent}{2em}\setlength{\parindent}{2em} (a) Firstly draw the topic assignment of ${z_n}$ from $Mult(f({\eta _d}))$, where $f({\eta _d})$ is a natural parameterization of the topic proportions ${\eta _d}$ to the mean parameterization ${\theta _d}$; \\
+        \setlength{\parindent}{2em}\setlength{\parindent}{2em} (b) Then for each topic, draw word ${w_{d,n}}|\{ {z_n},\beta \}$ from $Mult({\beta _{{z_n}}})$.\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure3
+\begin{figure*}
+    \begin{center}
+        \includegraphics [width=1\textwidth] {figure3-0220-v1.eps}%{figure4-visualizeFeature_mix-v7.eps}
+        \caption{Feature visualization using t-sne \cite{van2008visualizing}. We visualize three types features on the SCENE 8 dataset, bow, latent semantic representations of LDA and CTM. It can observed that latent semantic features derived from LDA are more compact than BoW, while latent semantic features of CTM demonstrate a superior cluster effect for all the scene categories in semantic feature space. (Best viewed in color.)}
+        \label{Fig:feature visualization}
+    \end{center}
+\end{figure*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% section 3
+\section{Methodology} \label{Sec:Methodology}
+Based on the hypothesis that CTM could reasonably model the relationship among topics for latent semantic features and Fisher Kernel framework may further enhance the discriminative capacity, the task of scene classification will be pretty straightforward: first estimate the parameters of CTM from a training set, and then build the correlated topic vector with the aid of Fisher Kernel framework for both the training and test images. The CTV will be utilized as the final feature representation, which can be feed to one classifier, e.g. SVM in our implementation, to recognize different scene categories. In this section, the detailed derivation and solutions of CTV will be discussed.
+we firstly introduce latent semantics, by which semantic co-occurrence implies certain correlations. We then construct the CTV by utilizing both Variational Bayesion (VB) method and Gibbs sampling (GS) method. The basic scheme of CTV encoding has been shown in Fig. \ref{Fig:flowchart}.
+
+\subsection{Latent Semantic Representation}
+CTM is introduced as the generative model for scene image data. The motivation is two folds: firstly to remove the independence assumptions implicitly of Dirichlet distribution on topic proportions \cite{cinbis2012image, cinbis2015approximate}, and secondly to further model the correlation structures among topics by a logistic normal prior \cite{atchison1980logistic}. The process of generating an image through CTM has been stated in Table \ref{Table:table_ctm}.
+%The scheme of CTV has been illustrated in Fig. \ref{Fig:flowchart} while the process of generating an image through CTV has been stated in Table \ref{Table:table_ctm}.
+
+Given a dataset that consists of $D$ images, each image is represented as a collection of visual words from a vocabulary containing $V$ visual terms. Formally, let ${w_d} = \{ {w_{d,n}},n \in 1,...,{N_d}\}$ denote the visual word indices corresponding to $N_d$ patches sampled in an image $d$, where $w_{d,n}$ is the word assignment for its $n$-$th$ patch. In CTM, an image is modelled as mixtures over $K$ latent topics, where each topic is represented by a multinomial distribution over $V$ visual words. Specifically, given a certain topic, each word is sampled with respect to a multinomial distribution and its probability is parameterized by a matrix $\beta  = {({\beta _{ij}})_{K \times V}}$.
+
+The essential of CTM is a more flexible logistic normal distribution \cite{aitchison1986statistical}, which has been employed to model the realistically latent topic structure. As discussed in Section \ref{Sec:Introduction}, this is hinted from the fact that one topic may be correlated with others. Since CTM is based on the logistic normal distribution, such correlation among topics could be reasonably modelled by incorporating the covariance structure \cite{blei2007correction}. The logistic normal distribution, parameterized by $K$ dimensional mean vector $\mu$ and $K \times K$ covariance matrix $\Sigma$, both of which are hyper-parameters, is then imposed on topic proportions as a prior in CTM. The topic proportion of image $d$ is termed as ${\theta _d} = [\theta _d^1,...,\theta _d^K]$, where
+%============Equation 1============
+\begin{equation}
+   \theta _d^i = f(\eta _d^i) = \exp \eta _d^i/\sum\nolimits_j {\exp \eta _d^j}.
+\end{equation}
+%=================================
+It assumes that $\eta_d$ is subject to a normal distribution $\mathcal{N}\{\mu,\Sigma\}$. Consequently, $f({\eta _d})$ maps $\eta_d$ to its mean parameterization $\theta_d$ located as a point on the $k-1$ topic simplex. To highlight, the parameter $\Sigma$ interprets the relationship among topics.
+
+As shown in Fig. \ref{Fig:flowchart}, the topics are shared by all images in the dataset. But the topic proportions, i.e. $\theta_d$, definitely vary stochastically across images, as they are randomly drawn from the prior distribution. After $\theta_d$ are obtained, words could be drawn from each topic in the collection according to $\beta$. % The overall generating process has been concluded in Table \ref{Table:table_ctm}.
+
+It is very straightforward to make the hypothesis that the topic proportions $\theta$ for each image could be utilized as the desired latent semantic representation. Two main reasons are: (1) $\theta$ remain the image-specific property; (2) topic proportions $\theta$ imply correlation-ship among topics stemming from a logistic normal prior. As validated in Fig. \ref{Fig:feature visualization}, the latent semantic representation derived from CTM is more compact and discriminative than conventional BoW and LDA.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure4
+\begin{figure}
+    \begin{center}
+        \includegraphics [width=0.48\textwidth] {figure4-table-v3.eps}
+        \caption{Performance of CTM based latent semantic representation on the SCENE 8 dataset \cite{oliva2001modeling}.}
+        \label{Fig:performance of CTM}
+    \end{center}
+\end{figure}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The performance of CTM based latent semantic representation can not consistently increase with the increasing number of topics yet. The experimental results shown in Fig. \ref{Fig:performance of CTM} validate this situation. Given 200 and 256 vocabulary sizes, the topic representations perform better and better, but its accuracy decreases when the topic number is larger than 50 and 60 respectively. A similar situation of LDA has been demonstrated in \cite{quelhas2007thousand}. This limitation of latent semantic representations may be not resulted from poor statistical estimation, but from the intrinsic ambiguity of the underlying BoW representation \cite{rasiwasia2012holistic}. Another reason is that latent semantic features stemmed from word co-occurrence fail to utilize the statistical information between semantics/topics and words. These two reasons explain why latent features derived from CTM should not be simply utilized, although it better characterizes scene semantics through the modelling of correlations among topics.
+%The limited topic number usually leads to poor discriminative capacity. A similar situation of LDA has been reported and demonstrated in \cite{quelhas2007thousand}, which is the reason of why sometimes the latent semantic representations may show worse performance. Moreover, the situation could be worse as our experiments show in Fig. \ref{Fig:performance of CTM}, where the performance of latent semantic representation will not consistently increase with the increasing number of topics. It may result from the greatly dimensionality reducing. Another reason possibly is that latent semantic features stemmed from word co-occurrence failed to utilize the statistical information between semantics and words. These two reasons partly interpret why latent features derived from CTM should not be simply utilized, although it better characterizes scene semantics implicitly through the modelling of correlations among topics.
+
+To further encode informative features based on semantics, we attempt to explore the contributions of low level words to the generating of middle level semantics from the information geometry view. Therefore, we propose the feature encoding scheme of Correlated Topic Vector (CTV) aided by the Fisher Kernel Framework \cite{zhou2014learning}, which can integrate the benefits of generative and discriminative approaches.
+
+% section 3.2
+\subsection{Correlated Topic Vector}
+We first discuss the derivation of a formal expression of CTV features by utilizing the Variational Bayesian method, which computes the gradient of the log likelihood of an image and the Fisher information matrix with respect to model parameters, i.e. hyper-parameters $\{ \mu,\Sigma \}$ and global latent parameter $\beta$.
+
+The log probability of an image $d$ is $ L = \log p({w_d}|\mu ,\Sigma ,\beta )$ defined by:
+%============Equation 2============
+\begin{equation}
+  \begin{array}{l}
+    p({w_d}|\mu ,\Sigma ,\beta )\\
+     = \int {p(\eta |\mu ,\Sigma )} (\prod\limits_{n = 1}^{{N_d}} {\sum\limits_{{z_n}} {p({z_n}|\eta )p({w_{d,n}}|{z_n},\beta )} } )d\eta ,
+  \end{array}
+\end{equation}
+%==================================
+where $z_n$ denotes a vector of topic assignments of word $w_{d,n}$ with only one component equivalent to 1 and others to 0, i.e. the occurrence of word $n$ in image $d$.
+
+It is obvious that the logistic normal prior distribution of topic proportions $p(\eta |\mu ,\Sigma )$ is non-conjugate to the multinomial posterior distribution of topic assignments $p({z_n}|\eta )$. As a result, it is hard to analytically compute the integrals in Equation (2). In other word, we cannot directly derive the gradient of the log likelihood to obtain CTV features.
+
+We resort to the Variational Bayesian method \cite{jordan1999introduction} to derive the formal expression. Variational Bayesian is an approximate approach that optimizes a deterministic objective lower bounded on the data of log likelihood \cite{jordan1999introduction}. With mean-field assumptions \cite{blei2006correlated}, the original graphic model is simplified with variational parameters $\{ \lambda ,{\nu ^2},\phi \}$. In this case, $L = {L_{VB}} + {D_{KL}(q || p)} \ge {L_{VB}}$, where ${D_{KL}}$ is the Kullback-Leibler (KL) divergence between distribution $q$ and $p$. ${L_{VB}}$ denotes the lower bound of log likelihood. $L$ can be approximated as $L_{VB}$:
+%============Equation 3============
+\begin{equation} \label{Equ:Lvb}
+    \begin{array}{l}
+        \begin{aligned}
+            L_{VB} = & \;{E_q}[\log p(\eta |\mu ,\Sigma )] + \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({z_n}|\eta )]}  + \\
+              &\;\;\;\;\sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({w_{d,n}}|{z_n},\beta )]}  + H(q),
+        \end{aligned}
+    \end{array}
+\end{equation}
+%==================================
+where $E$ is the expectation with respect to the variational distribution $q$ whose parameters $\{ \lambda ,{\nu ^2},\phi \}$ are variated from $\{ \mu , \Sigma \}$, and $H(q)$ denotes the entropy of this distribution. Details on how to obtain $\{ \lambda ,{\nu ^2},\phi \}$ from $\{ \mu , \Sigma \}$ can be found in \cite{blei2007correction}.
+
+Now, we could derive the formal expression of the correlated topic vector for image $d$ based on the learned parameters of CTM model, i.e. $\Theta {\rm{ = \{ }}\mu ,\Sigma ,\beta {\rm{\} }}$. Its form is ${\varphi _{[\Theta]}} = {I_{[\Theta ]}}^{ - 1/2}{u_{[\Theta]}}$. ${u_{[\Theta ]}} = {\partial L}/{\partial \Theta }$ denotes as Fisher score that is the partial derivative of the log-likelihood, and ${I_{[\Theta ]}}{\rm{ = }}E[{u_{[\Theta ]}}^T{u_{[\Theta ]}}]$ is the Fisher information matrix. ${u_{[\Theta ]}}$ represents the velocities passing through $\Theta$ along the coordinate curves, while ${I_{[\Theta]}}$ plays the role of a metric tensor. Under certain regularity conditions, the Fisher information matrix is the negative of the expectation of the second derivative with respect to $\Theta$. ${I_{[\Theta ]}}{\rm{ = }}E[{u_{[\Theta ]}}^T{u_{[\Theta ]}}]$ can be written as ${I_{[\Theta ]}} =  - E[ {{\partial ^2}L}/{\partial {\Theta ^2}}]$.
+
+The Fisher scores based on hyper-parameters ${\rm{\{ }}\mu ,\Sigma {\rm{\} }}$ and global parameter $\beta$ are
+%============Equation 4============
+\begin{equation} \label{Equ:u-mu}
+\begin{aligned}
+  {u_{[\mu ]}} = {{\partial L}}/{{\partial \mu }} = {\Sigma ^{ - 1}}({\lambda _d} - \mu ),
+  \end{aligned}
+\end{equation}
+%============Equation 5============
+\begin{equation} \label{Equ:u-Sigma}
+\begin{aligned}
+    {u_{[\Sigma^{-1} ]}} = {{\partial L}}/{{\partial \Sigma ^{-1} }} = \Sigma - diag(\nu _d^2) - {({\lambda _d} - \mu )^T}({\lambda _d} - \mu ).
+    \end{aligned}
+\end{equation}
+
+The Fisher score based on global parameter $\beta$ is ${u_{[\beta ]}} = {({u_{[{\beta _{ij}}]}})_{K \times V}} = {(\partial L/\partial {\beta _{ij}})_{K \times V}}$, and 
+%============Equation 6============
+\begin{equation} \label{Equ:u-beta}
+\begin{aligned}
+  %{u_{[\beta ]}} = {({u_{[{\beta _{ij}}]}})_{K \times V}} = {(\partial L/\partial {\beta _{ij}})_{K \times V}} = \sum\limits_{n = 1}^{{N_d}} {{{{\phi _{ni}}w_{d,n}^j}}/{{{\beta _{ij}}}}}.
+  {\partial L/\partial {\beta _{ij}}} = \sum\limits_{n = 1}^{{N_d}} {{{{\phi _{ni}}w_{d,n}^j}}/{{{\beta _{ij}}}}}.
+  \end{aligned}
+\end{equation}
+%==================================
+$\mu$ and $\Sigma$ are parameters of the true multivariate Gaussian distribution, and they should be learnt from all the images. ${\lambda _d}$ and $\nu _d^2$ are fit from a single observed image data ${w_d}$. $({\lambda _d} - \mu)$ measures differences between the mean value of true prior distribution and its approximated variational distribution. It is similar to the term $\Sigma - diag(\nu _d^2)$ which measures the variance differences. ${\phi _{ni}}$ is a multinomial parameter and denotes how likely a word ${w_{d,n}}$ occurs given topic assignment $z$. ${u_{[\beta ]}}$ can be regarded as the expectation of word occurrence whose possibility ${\phi _{ni}}$ is weighted by the global parameter $\beta$. To avoid matrix multiplication, we derive the partial derivative of the log-likelihood on $\Sigma^{-1}$, the inverse of $\Sigma$ in Equation (\ref{Equ:u-Sigma}). The derivations of Equations (\ref{Equ:u-mu})-(\ref{Equ:u-beta}) are provided in Appendix A.% \ref{Sec:Appendix A}.
+
+Fisher information matrix can be expressed as:
+%============Equation 7============
+\begin{equation}
+\begin{aligned}
+    {I_{[\mu ]}} =  - E[{{{\partial ^2} L}}/{{\partial \mu ^2 }}] = {\Sigma ^{ - 1}},
+    \end{aligned}
+\end{equation}
+%============Equation 8============
+\begin{equation}
+\begin{aligned}
+ {I_{[\Sigma^{-1} ]}} = - E[{{{\partial ^2} L}}/{{\partial ({\Sigma^{-1}}) ^2 }}],
+ \end{aligned}
+\end{equation}
+%============Equation 9============
+\begin{equation}
+  \begin{array}{l}
+  \begin{aligned}
+    {I_{[\beta ]}} = & {(I_{[{\beta _{ij}}]}^{})_{K \times V}} =  - E[{{{\partial ^2}L}}/{{\partial \beta _{ij}^2}}] \\
+    \;\;\;\;\;\; = & - \sum\limits_{n = 1}^{{N_d}} {p({w_{d,}}_n|\theta_d )} {{{\partial ^2}L}}/{{\partial \beta _{ij}^2}}\\
+    \;\;\;\;\;\; = & - \sum\limits_{n = 1}^{{N_d}} {p({w_{d,n}}|{\theta _d})} \sum\limits_{m = 1}^{{N_d}} {{{{\phi _{mi}}w_{d,m}^j}}/{{\beta _{ij}^2}}} \\
+    \;\;\;\;\;\;{\rm{ = }} & - \sum\limits_{m = 1}^{{N_d}} {{{{\phi _{mi}}w_{d,m}^j}}/{{\beta _{ij}^2}}} .
+    \end{aligned}
+  \end{array}
+\end{equation}
+%==================================
+
+We have immediately three approximated Fisher Vectors on $\{ \mu ,\Sigma ,\beta \}$, where ${\varphi _{[\mu ]}} = {I_{[\mu ]}}^{ - 1/2}{u_{[\mu ]}}$, ${\varphi _{[\Sigma ]}} = {I_{[\Sigma ]}}^{ - 1/2}{u_{[\Sigma ]}}$, ${\varphi _{[\beta ]}} = {I_{[\beta ]}}^{ - 1/2}{u_{[\beta ]}}$. CTV is then obtained by concatenating these three vectors and feature normalization (e.g. power normalization and $L_2$-normalization \cite{perronnin2010improving}\cite{sanchez2013image}).
+
+% section III-C
+\subsection{Gibbs Sampling Solution}
+Variational Bayesian methods mentioned above maximizes an explicit objective, and can be utilized to derive the formal expression of the CTV. We denote CTV derived from the VB approach as CTV-VB. However, as demonstrated in \cite{chen2013scalable} and \cite{mimno2008gibbs}, the costly iterative optimization computation makes it impractical to scale it to large and complex datasets. To address this limitation, we further resort to the scalable Gibbs sampling algorithm \cite{chen2013scalable} and name the resulted CTV as CTV-GS. More importantly, we aim to explore the CTV derivation with Gibbs sampling solution.
+
+Gibbs sampling avoids explicit computations of integral terms by subsequently applying a stochastic transition operator to a randomly drawn latent variable rather than optimizing for a lower bound of the log-likelihood, so that it is hard to directly derive the specific form for CTV with Gibbs sampling. One strategy is to approximate the log-likelihood of Gibbs sampling solution. The intuition comes from the evidence that ${L_{GS}}$ plus the expectation of ${D_{KL}}$ equals to ${L_{VB}}$ \cite{salimans2014markov},
+${L_{GS}} = {L_{VB}} - {E_{q({z_T}|w)}}\{ {D_{KL}}[q(y|{z_T},x)||r(y|{z_T},x)]\} \le {L_{VB}}$, where $x$ is the observed data, ${z_T}$ is the outcome of iteratively sampling, $y = {z_0},{z_1},...,{z_{T - 1}}$ are a series of state variables for each iteration, and $r(y|{z_T},x)$ is a specific approximated distribution of $q(y|x,{z_T})$. ${D_{KL}}$ is the KL divergence between distribution $q$ and $r$ \cite{salimans2014markov}. ${L_{VB}}$ can be regarded as the upper bound on ${L_{GS}}$. Therefore we can approximate the log-likelihood of Gibbs sampling controlled by the expectation of ${D_{KL}}$. For the CTV-GS, we try to utilize the benefits of both Variational Bayesian and Gibbs sampling to construct CTV. Specifically, parameters involved in CTV are learnt with Gibbs sampling and the encoding of CTV features relys on the Variational Bayesian method. Both Variational Bayesian and Gibbs sampling methods are approximations of the log probability of CTM, which characterize the same dependence among variables in a hierarchical graphic model.
+%The CTV with the Variational Bayesian method is denoted as CTV-VB and The CTV with the Gibbs sampling method is denoted as CTV-GS.
+%The with the aid of Variational Bayesion
+% Even though they are different solutions to CTM, the formulas reveal the statistical relations between topics and words from the information geometry view. Their involved parameters of CTM, e.g. topic proportions, word probabilities given a topic,
+The feasibility of such approximation method is demonstrated by the experimental results in Section \ref{Sec:Experiments}.%\uppercase\expandafter{\romannumeral4}.
+%We  will adopt Gibbs sampling methods for CTM\cite{chen2013scalable}, as pointed in\cite{chen2013scalable}, the proposed Gibbs sampling solution is able to deal with large scale data sets without sacrificing the quality of inference and it produce similar or better perplexity, when compared with Variational Bayesian method.
+
+% section III-D
+\subsection{CNN-based Implementation}
+Deep CNN has demonstrated remarkable recognition performance \cite{krizhevsky2012imagenet, donahue2013decaf, jia2014caffe}. Especially, its activated features of later layers present excellent generalization of image representation and powerful semantic clustering results \cite{donahue2013decaf}.
+
+We evaluate the proposed CTV based on local descriptors extracted using CNN \cite{krizhevsky2012imagenet}. CNN features of later layers are considered as a type of soft-assignment BoW. We build our deep-BoW based on them. In detail, we divide one image into regions sampled on a dense grid with $P \times P$ pixels and $S$-pixel stride size. Fully connected CNN outputs of the seventh layer, denoted as FC7, are extracted for each region. we average these local descriptors across regions. Followed by numerical truncation, the feature pooling, e.g. average pooling and max pooling, aids to obtain deep-BoW features with desired dimensions.
+One popular method named as CNN-BoW in this paper attempts to encode BoW by replacing local descriptors e.g. SIFT with CNN \cite{kwitt2012scene, cinbis2015approximate, gong2014multi}.
+%Different from some existing strategies of encoding BoW treat them as local descriptors \cite{kwitt2012scene, cinbis2015approximate, gong2014multi}, we consider CNN features of later layers as a soft-assignment BoW. In detail, we divide one image into regions sampled on a dense grid with $P \times P$ pixels and $S$-pixel stride size. CNN features are then extracted for each region. Fully connected outputs of the seventh layer, denoted as FC7, are region descriptors. Deep-BoW features are obtained by average pooling of regions followed by numerical truncation.
+Compared with it, our deep-BoW can avoid a series of costly clustering and quantization operations. Besides, it accords with the evidence that a scene consists of objects. CNN is trained on an object-centric dataset with 200 categories, ImageNet \cite{deng2009imagenet}. After multi-hierarchy feature encoding and pooling, the activated features of fully connected layers with rich object information, can be regarded as learned soft-assignment histogram of visual words without extra object detections. Besides, as pointed in \cite{gong2014multi}, the rectified linear unit (ReLU) transformation guarantees all the values of FC7 are non-positive for encoding deep-BoW. Since some objects often appear in different regions in a scene, features extracted from each region followed by pooling may be more representative than those from the whole image.
+
+In Fig. \ref{Fig:Comparison BoW}, we provide experimental comparison results for CNN-BoW and deep-BoW with different dimensions on the MIT Indoor 67 dataset \cite{quattoni2009recognizing}. CNN-BoW derived from clustering methods e.g. GMM and $k$-means, performs worse than deep-BoW. We consider three different pooling methods to obtain lower dimension deep-BoW: fixed pooling, random pooling and max pooling. With fixed pooling, we select elements of the FC7 feature vector at different dimensions every fixed step stride. With random pooling, we select elements randomly. With max pooling, every certain step strides, we choose the dimension with maximum value among elements in each step stride. No matter which pooling approach it deploys, deep-BoW is always better than CNN-BoW, with the same dimensions which range from 256 to 4096. One crucial reason is that dropout for CNN ensures that three pooling above perform stable.
+%
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure5
+\begin{figure}
+\begin{center}
+\includegraphics [width=0.48\textwidth] {figure5-v0220.eps}
+\caption{Comparison of CNN-BoW and deep-BoW on the MIT Indoor 67 dataset.}
+\label{Fig:Comparison BoW}
+\end{center}
+\end{figure}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section 4
+\section{Experiments} \label{Sec:Experiments}
+In this section we report experimental results designed to evaluate the performance of the proposed CTV. Similar to \cite{perronnin2007fisher, sanchez2013image, chatfield2011devil}, we train one-vs-all linear SVM classifiers on training images with LIBSVM \cite{chang2011libsvm}. The evaluation metric is average classification accuracy \cite{gong2014multi}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section 4.1
+\subsection{Setup}
+\textbf{Datasets.} We conduct experiments on two benchmark datasets: MIT Indoor 67 \cite{quattoni2009recognizing} and SUN 397 \cite{xiao2010sun, xiao2014sun}. MIT Indoor 67 contains 67 scene categories. Images have been split into 5360 training images and 1340 testing images, i.e. 80 training and 20 test images per category. SUN 397 is a large-scale dataset for scene recognition. It contains 397 scene categories, and each of ten splits has 50 training and 50 test images per category.
+
+\textbf{Proposed Methods.} We implement CTV-VB and CTV-GS (denoted as CTVs for convenience), on three scale levels mentioned above respectively. Because of high dimensions of Fisher Vectors, we do not concatenate the three scale original CTV features to get aggregated multi-scale CTV. Our multi-scale CTV-VB or CTV-GS is derived from the concatenation of SVM scores for three scale features. Since Fisher information matrix is immaterial as pointed in [22], we approximate CTV with its Fisher score.
+%For all CTVs, they are reduced to 5000 dimensions using a PCA.
+
+An image is resized to 256$\times$256 pixels firstly. Three scale levels which correspond to 256$\times$256, 128$\times$128, 64$\times$64 pixels for the patch sizes, are chosen. Patches are sampled with the stride of 32 pixels on all the scale levels. CNN FC7 features are extracted using the Caffe package \cite{jia2014caffe} pre-trained on the ImageNet dataset \cite{deng2009imagenet}. To learn involved parameters for CTV, the deep-BoW is fed to the VB based CTM or GS based scalable CTM.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% table2
+\begin{table*}[!t]
+\centering
+\caption{Comparison on the SUN 397 Dataset.}
+\label{Table:result-SUN397}
+    \begin{tabular}{c|c|c|c|c}
+    \hline
+    \multirow{1}{2cm}{} & \multirow{1}{2cm}{Methods} & \multirow{1}{2cm}{Accuracy} & \multirow{1}{1cm}{Year} & \multicolumn{1}{c}{Description} \\
+    \hline
+    \hline
+    \multirow{7}[-1]{2cm}{Most Relevant Methods}
+        & CNN\cite{zhou2014learning}               & 42.61           & 2012 & Networks trained on ImageNet image dataset \\
+  %      & IFV\cite{sanchez2013image}               & 47.20           & 2013 & Fisher Vector based on GMM \\
+  %      & Latent GMM\cite{cinbis2015approximate}   & --              & 2015 & Fisher Vector based on Latent Mixture of Gaussian; grid sampling patches \\
+        & DMM FV\cite{dixit2015scene}              & 49.86           & 2015 & Dirichlet Mixture Model based Fisher Vector \\
+        & Semantic FV\cite{dixit2015scene}         & 51.80            & 2015 & GMM Fisher Vector, natural parameterization, best three scales \\
+        & VLAD\cite{gong2014multi}                 & 51.98           & 2014 & the concatenation of VLAD on three scale levels \\
+  %      & Semantic FV\cite{dixit2015scene}         & 53.0            & 2015 & GMM Fisher Vector, natural parameterization, four scales \\
+        & \textbf{CTV-GS(ours)}                    & \textbf{53.21}  & --   & Gibbs sampling based Correlated Topic Vector \\
+        & \textbf{CTV-VB(ours)}                    & \textbf{53.35}  & --   & Variational Bayesian based Correlated Topic Vector \\
+    \hline
+    \multirow{6}{2cm}{Other State-of-the-art Methods}
+        & SPMSM\cite{kwitt2012scene}               & 28.20             & 2012 & Spatial pyramid matching, predefined semantic themes\\
+        & Meta-classes\cite{bergamo2014classemes}  & 36.80             & 2014 & Classifier-based features \\
+        & SUN(MKL)\cite{xiao2010sun}               & 38.00             & 2010 & Multi-kernel learning \\
+        & DeCaF\cite{donahue2013decaf}             & 40.94            & 2014 & DeCaf, global features \\
+        & Places-CNN\cite{zhou2014learning}        & \textbf{54.32}   & 2014 & Networks trained on a large-scale scene image dataset \\
+    \hline\hline
+\end{tabular} \end{table*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% table3
+\begin{table*}[!t]
+\centering
+\caption{Evaluation of Features Extracted at Different Scales}
+\label{Table:scales}
+    \begin{tabular}{c|c|c|c|c|c|c|c|c}
+    \hline
+    \multirow{2}{2cm}{Methods} & \multicolumn{4}{c|}{MIT Indoor 67}      & \multicolumn{4}{c}{SUN 397}           \\ \cline{2-9}
+                                          & 256$\times$256 & 128$\times$128 & 64$\times$64 & Multi-scale & 256$\times$256 & 128$\times$128 & 64$\times$64 & Multi-scale \\
+    \hline \hline
+        VLAD\cite{gong2014multi}          & 53.73         & 65.52 & 62.24 & 68.88  & 39.57          & 45.34            & 40.21          & 51.98                \\
+        Semantic FV\cite{dixit2015scene}  & 59.50 & 65.10          & --             & 68.80           & 43.76          & 48.30            & --             & 51.80                \\
+        \textbf{CTV-GS(ours)}             & 58.88         & 65.07          & 61.57          & 68.36           & 43.11          & \textbf{49.60}   & \textbf{44.52} & \textbf{53.21}       \\
+        \textbf{CTV-VB(ours)}             & \textbf{59.78}         & \textbf{65.52}          & \textbf{62.31}          & \textbf{68.88}           & \textbf{44.30} & \textbf{50.08}   & \textbf{47.00} & \textbf{53.35}       \\
+    \hline \hline
+    \end{tabular}
+\end{table*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% table4
+\begin{table*}[!t]
+\centering
+\caption{Comparison on the MIT Indoor 67 Dataset}
+\label{Table:result-mitindoor67}
+    \begin{tabular}{{c|c|c|c|c}}
+    \hline
+     & Methods & Accuracy & Year & \multicolumn{1}{c}{Description} \\
+    \hline \hline
+    \multirow{7}[-4]{2cm}{Most Relevant Methods}
+        & CNN\cite{zhou2014learning}               & 56.79 & 2012 & Networks trained on ImageNet image dataset \\
+  %      & IFV\cite{sanchez2013image}               & 60.8  & 2013 & Fisher Vector based on GMM \\
+        & Latent GMM FV\cite{cinbis2015approximate}& 65.00  & 2015 & Fisher Vector based on Latent GMM; grid sampling patches \\
+        & Spare Coding FV\cite{liu2014encoding}    & 68.20  & 2014 & Sparse Coding based Fisher Vector\\
+        & DMM FV\cite{dixit2015scene}              & 68.50 & 2015 & Dirichlet Mixture Model based Fisher Vector \\
+        & Semantic FV\cite{dixit2015scene}         & 68.80  & 2015 & GMM Fisher Vector, natural parameterization, best three scales \\
+        & VLAD\cite{gong2014multi}                 & 68.88 & 2014 & VLAD Concatenation of three scale levels \\
+%        & Semantic FV\cite{dixit2015scene}         & 69.70  & 2015 & GMM Fisher Vector, natural parameterization, four scales \\
+        & \textbf{CTV-GS(ours)}                    & 68.36 & -- & Correlated Topic Vector with Gibbs sampling solution \\
+        & \textbf{CTV-VB(ours)}                    & \textbf{68.88} & -- & Correlated Topic Vector with Variational Bayesian solution \\
+    \hline
+    \multirow{6}[-2]{2cm}{Other State-of-the-art Methods}
+        & Improved Object Bank\cite{li2014object}  & 46.60 & 2014 & A large number of pre-trained object detectors \\
+        & DeCaF\cite{donahue2013decaf}             & 58.40  & 2014 & Decaf, global features \\
+ %       & DeCaF\cite{donahue2013decaf}             & 59.5*/58.4(pami2015) & 2014 & Decaf, global features \\
+  %      & Spare Coding FV\cite{liu2014encoding}    & 68.2  & 2014 & Sparse Coding based Fisher Vector\\
+        & FV + Bag of parts\cite{juneja2013blocks} & 63.18 & 2013 & GMM FV; distinctive part detectors; part occurrences \\
+        & Mid-level elements\cite{doersch2013mid}  & 64.03 & 2013 & Mid-level visual element discovery as discriminative model seeking \\
+        & Places-CNN\cite{zhou2014learning}        & 68.24 & 2014 & Networks trained on Scene image dataset \\
+        %& OverFeat + SVM\cite{razavian2014cnn}     & 69.0  & 2014 & CNN features off-the-shelf, local features \\
+    \hline\hline
+\end{tabular} \end{table*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure6
+\begin{figure*}
+    \begin{center}
+        \includegraphics [width=1\textwidth] {figure6-v3-7-1.eps}
+        \caption{ Recognition results of the \emph{village} scene. In the first row, they are true positive for the CTV but false negative for the CNN features. In the three rows below them, these three images are from the scene category that they are wrongly recognized as with CNN features respectively.}
+        \label{Fig:village examples of CTV}
+    \end{center}
+\end{figure*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure7
+\begin{figure*}
+    \begin{center}
+        \includegraphics [width=1\textwidth] {figure7-v3-7-2.eps}
+        \caption{Region examples.}
+        \label{Fig:village patches}
+    \end{center}
+\end{figure*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure8
+\begin{figure*}
+    \begin{center}
+        \includegraphics [width=1\textwidth] {figure8-v3-7-3.eps}
+        \caption{Recognition results of four scene categories. For each category, we give one image which is the true positive of the CTV-GS but the false negative of CNN feature, and three negative images from a very similar category.}
+        \label{Fig:CTV examples of other categories}
+    \end{center}
+\end{figure*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure9
+\begin{figure*}
+    \begin{center}
+        \includegraphics [width=1\textwidth] {figure9-mix-v2-latex(matrix).eps}
+        \caption{Topic correlation matrix. The first and second columns are those for 8 topics on the SUN 397 dataset and MIT Indoor 67 dataset, and the last two are for 16 topics on both datasets. Solid circle stands for positive correlation between two topics, while open circle represents negative correlation between two topics. Larger radius, larger positive/negative correlation.}
+        \label{Fig:correlation matrix}
+    \end{center}
+\end{figure*}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section 4.2
+\subsection{Main Results}
+\textbf{SUN 397 dataset.}
+Main results on the large-scale SUN 397 have been provided in Table \ref{Table:result-SUN397}. We compare the proposed CTVs (CTV-VB and CTV-GS) with (1) most relevant methods derived from the Fisher Vector framework, and with (2) other state-of-the-art methods.
+
+The first group of comparison methods involves CNN FC7 features as descriptors. These most relevant methods include baseline CNN features and several Fisher Vector based methods: DMM FV \cite{dixit2015scene}, Semantic FV \cite{dixit2015scene} and VLAD \cite{gong2014multi}. DMM FV relys on DMM to model semantic multinomial descriptors. Semantic FV improves DMM FV with natural parameterizations of multinomial parameter vectors and computes Fisher Vectors with learnt GMM. VLAD is pointed as an approximation of Fisher Vector based on GMM \cite{dixit2015scene}. Among these most relevant methods, a CNN baseline accuracy of 42.61\% has been achieved as reported in \cite{zhou2014learning}.
+In the table \ref{Table:result-SUN397}, the results of VLAD \cite{gong2014multi}, Semantic FV \cite{dixit2015scene}, CTV-GS and CTV-VB are multi-scale. CTV-VB achieves 53.35\% and CTV-GS achieves 53.21\%. Both of them achieve a gain of up to 10.74\% and 10.60\%, compared with CNN. The difference of 0.14\% between them demonstrates the validness of approximation of CTV-VB by CTV-GS. This issue will be discussed again when evaluating features at different scales. DMM FV \cite{dixit2015scene} is built on DMM which assumes that themes/topics are independent from each other. Its performance is less by 3.49\% than CTV-VB and by 3.35\% than CTV-GS. Besides, CTV-VB and CTV-GS achieve respectively 1.55\% and 1.41\% gains than Semantic FV. The concatenation of Semantic FVs at best four scales achieves 53.0\% \cite{dixit2015scene}, which is lower than CTV-VB and CTV-GS. Gong \emph{et al.} \cite{gong2014multi} report that the CNN based multi-scale VLAD can improve the classification performance up to 51.98\%. CTV-GS and CTV-VB also outperform it. This result validates the i.i.d. assumption may not enough to model topics as it is pointed that VLAD is regarded as the approximation of Fisher Vector based on GMM \cite{dixit2015scene}.
+%In summary, DMM FV is built on DMM which assumes that themes/topics are independent from each other; VLAD and Semantic FV, rely on GMM which implies i.i.d. assumption for all the patches of images \cite{cinbis2015approximate} without topics correlation. These comparison results with CTV-VB and CTV-GS validate the i.i.d. assumption may not enough to model topics.
+%The first group of comparison methods involves CNN FC7 features as descriptors. As shown in Table \ref{Table:result-SUN397}, when we derive Fisher Vector representations with the aid of semantic correlation, the experimental results demonstrate that the resulted CTVs are superior to other relevant methods. Among these most relevant methods, a CNN baseline accuracy of 42.61\% has been achieved as reported in \cite{zhou2014learning}. In the table \ref{Table:result-SUN397}, the results of VLAD \cite{gong2014multi}, Semantic FV \cite{dixit2015scene}, CTV-GS and CTV-VB are multi-scale, more accurately three scale levels.
+%CTV-GS achieves 53.21\% and CTV-VB 53.35\%. Both of them achieve a gain of up to 10. The former is comparable to the later. The difference of 0.06\% demonstrates the validness of approximation of CTV-VB by CTV-GS. This issue will be discussed again when evaluating features at different scales. When compared with Semantic FV \cite{dixit2015scene}, both of proposed CTV-VB and CTV-GS work better with 1.41\% and 1.55\% gains than Semantic FV. Besides, the concatenation of Semantic FVs at best four scale is reported that it achieves 53.0\%. It can be observed that both of CTV-VB and CTV-GS keep pace with Semantic FV. Gong \emph{et al.} \cite{gong2014multi} report that CNN based multi-scale VLAD can improve the classification performance up to 51.98\%. CTV-GS and CTV-VB outperm VLAD by 1.23\%, 1.37\%, respectively.
+%
+%It characterizes the data clustering property of local descriptors of one image, and the covariance matrixes of its Gaussian components measure the relation between two dimensions for the descriptors, not the relation between two Gaussian components which can be considered as two clusters. As shown in Table \ref{Table:result-SUN397}, when we derive Fisher Vector representations with the aid of semantic correlation, the experimental results demonstrate that the resulted CTVs are superior to these relevant methods.
+
+Table \ref{Table:scales} reports our results of proposed CTVs at different scale levels. For each single scale level, the proposed CTV-VB improves the classification accuracy up to 44.30\% for 256$\times$256 scale level, 50.08\% for 128$\times$128 scale level, and 47.00\% for 64$\times$64 scale level. The performance of CTV-GS on each single scale level keeps pace with that of CTV-VB. The difference between them is only 0.48\% at least and 2.48\% at most. As mentioned before, this difference is reduced to 0.14\% in the multi-scale case. But we cannot leave out one point that Variational Bayesian methods to solve CTM will take too much time when convergence, especially for a large-scale dataset, e.g. SUN 397. It will be impractical for implementations as argued in \cite{chen2013scalable}. In general, our CTV-GS is computationally more efficient than CTV-VB, with classification performance being neck and neck with it.
+
+The proposed CTV-VB has improvements of 4.73\% for the 256$\times$256 scale level, 4.74\% for 128$\times$128 scale level, and 6.79\% for the 64$\times$64 scale level, in comparison with VLAD \cite{gong2014multi}. Similarly, our CTV-GS also outperforms VLAD by 4.04\% on average. As for Semantic FV, both CTV-VB and CTV-GS work better on 128$\times$128 scale than Semantic FV. For 256$\times$256 scale, CTV-VB is better than Semantic FV and CTV-GS has a comparable performance with it.
+
+%CTV representations, no matter individual scales or multi scales, are superior to CNN FC7 features quantitatively as discussed above. Besides, qualitatively, we find that they are able to correctly recognize most images as CNN features also correctly recognize.
+To further analysis CTVs, we present experimental results on test images. Fig. \ref{Fig:village examples of CTV} shows the recognition examples of \emph{village} scene images. Among \emph{village} scene images shown in the first row, \emph{buildings}, \emph{sky}, \emph{trees} and \emph{rocks} almost appear together. The proposed CTV leverages correlated latent topics learnt from word co-occurrence to describe this semantic co-occurrence and to eliminate the word ambiguity problem. Besides, these images are true positives for CTV but false negatives for CNN. Take the first image in the first row for example. It is correctly recognized as \emph{village} scene category with the CTV-GS while it is wrongly recognized as \emph{castle} scene category with the CNN feature. Below it, we also display three representative images whose category is \emph{castle} to observe how much this \emph{village} image is similar to them. \emph{Buildings}, \emph{sky}, and \emph{trees} all appear together in the \emph{village} and \emph{castle} scene. Obviously, capturing semantic correlation is also limited for feature encoding and extra-class similarity brings great challenges for scene image features including CNN and latent semantic representations. The proposed CTV with respect to the global latent parameter $\beta$ essentially promotes how visual words effect each latent topic, which is beneficial to identify the differences among scene categories. The reason is that one theme or topic is subject to the particular property of one scene. Buildings marked in green rectangles in Fig. \ref{Fig:village examples of CTV} vary greatly across different scenes, e.g. \emph{castle}, \emph{abbey}, \emph{construction site}, \emph{slum}, \emph{kasbah}. In Fig. \ref{Fig:village patches}, regions from two \emph{village} images in the first and the last second columns of Fig. \ref{Fig:village examples of CTV} are shown. It is more clear that large differences exist between the labelled regions of two categories and it motivates the exploration of the CTV.
+%it is shown the building and images in the first and the last second columns. even though its semantic theme can be building the labelled region of ``village'' example the same theme diverse between ``village'' and ``castle'' scenes. The region although its appearance, i.e. color and texture, is similar to three ones of ``desert vegetation''        high appearance similarity between which is likely to induce the assigned visual word similarity no matter word or theme between two categories which is trivial,
+In addition, four more examples from other categories are shown in Fig. \ref{Fig:CTV examples of other categories}. These four images from four categories are true positives for the CTV but are incorrectly recognized as other categories whose three representative images are present in Fig. \ref{Fig:CTV examples of other categories}.
+
+\textbf{MIT Indoor 67 dataset.}
+Main results on the MIT Indoor 67 have been provided in Table \ref{Table:result-mitindoor67}. Similar to SUN 397, we compare the proposed CTVs with (1) most relevant methods that include baseline CNN features and other methods derived from the Fisher Vector framework, and with (2) other state-of-the-art methods.
+
+The first group of comparison methods involves CNN FC7 features as descriptors, except Sparse Coding FV \cite{liu2014encoding} that utilizes CNN features of the sixth layer.
+Among these most relevant methods, a CNN baseline accuracy is 57.69\%. CTV-VB achieves 68.88\% classification accuracy and CTV-GS obtains 68.36\% performance. We come to the same conclusion on this dataset as SUN 397: CTV-VB and CTV-GS have the comparable performance. The former is a bit more accurate while the latter costs less time complexity. What's more, our CTVs are comparable to VLAD, DMM FV, Semantic FV and Sparse Coding. Sparse Coding FV \cite{liu2014encoding} extracts Fisher Vector of a sparse coding based model over local CNN featuers.
+Different from Semantic FV and VLAD, Latent GMM FV method \cite{cinbis2015approximate} places a Dirichlet prior on mixing weights which are the parameters of GMM. It achieves 65.0\% accuracy when the way of sampling patches is similar to ours, i.e. dense grid sampling. Due to Dirichlet prior, Latent GMM explicitly claims that each Gaussian component is independent to each other. Contrary to it, our CTVs take correlations between two components or clusters/themes/topics into consideration. CTV-VB outperform it by 3.88\%. Therefore, the independent assumption is strict to character semantics for scene images.
+
+We also evaluate the CTVs at different scale levels in Table \ref{Table:scales}. For the 256$\times$256 scale level, CTV-VB obtains 59.78\% accuracy and outperforms VLAD by 6.05\%; CTV-VB also achieve 58.88\% and is better than VLAD by 5.15\%. On the 256$\times$256 scale level, it encodes features just from the whole image, rather than cropping the image into patches. The indoor scene images often present more complex objects configuration because humans interact strongly in the places where they stay. Cropped patches may be robust to the intra-class variability (e.g. different sight ranges) but it is bound to severely destroy this configuration when keeping decreasing the patch size since the descriptors tend to describe one object or parts rather than the whole scene. This explains why CTVs extracted on 128$\times$128 scale level perform best among three scales and why the performances of CTVs decrease on the 64$\times$64 scale. In general, our CTVs still performs well on MIT Indoor 67 and are comparable with VLAD, Semantic FV.
+%The popular CNN network is usually trained on the ImageNet dataset which consists of object-centric images. Recently, Zhou \emph{et al.} \cite{zhou2014learning} have released the Place 205 dataset which includes scene-centric images and trained a network on it. Some work has shown that CNN features extracted from Place 205 network certainly bring larger improvements than those from ImageNet network for scene classification \cite{zhou2014learning}\cite{dixit2015scene}. However, in this paper we aim mainly to derive the CTV representation for recognition tasks. All our experiments are based on ImageNet CNN network and experimental results built on the Places 205 network are not provided.
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% figure5
+\begin{figure}
+\begin{center}
+\includegraphics [width=0.48\textwidth] {figure10-v2.eps}
+\caption{Evaluation of topic numbers on the MIT Indoor 67 dataset.}
+\label{Fig:Evaluation of topic number}
+\end{center}
+\end{figure}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section 4.3
+\subsection{Evaluation of Parameters}
+\textbf{Correlation between topics:} We visualize correlation matrixes obtained on the MIT Indoor 67 dateset in Fig. \ref{Fig:correlation matrix}. With the aid of CTM, the underlying correlated structure among topics is captured.
+
+\textbf{Number of topics:} We evaluate the effect of topic numbers on the MIT Indoor 67 dataset. The results are present in Fig. \ref{Fig:Evaluation of topic number}. With the topic numbers ranging from 8 to 128, the performance of the multi-scale CTV-GS change slightly. The similar cases occur on the 256$\times$256, 128$\times$128 and 64$\times$64 scale levels. We can see that the number of topics may be not a main factor for the encoding of CTV.
+
+\textbf{Solving algorithms:} we conduct experiments with the proposed features derived from two different CTM solving algorithms, CTV-VB and CTV-GS. From Table \ref{Table:result-SUN397}, \ref{Table:scales} and \ref{Table:result-mitindoor67}, it can be observed that, no matter multi-scale or a single scale level, CTV-GS are always neck and neck with CTV-VB on both datasets. In the case of three individual scales levels, the average difference between CTV-VB and CTV-GS is only 0.70\% on the MIT Indoor 67 dataset and 1.38\% on the SUN 397 dataset. It decreases to 0.52\% between multi-scale CTV-VB and multi-scale CTV-GS on the MIT Indoor 67 dataset and 0.06\% on the SUN 397 dataset.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% section 5
+\section{Conclusion} \label{Sec:Conclusion}
+In the paper we propose CTV representation for scene classification targeting to utilize the correlation among topics. By removing i.i.d assumption for local patches and involving the logistic normal prior distribution, this method could better model the generative process for feature learning. Implemented on rich semantic information of CNN features, we explore underlying correlated semantics and encode them into the Fisher Vector strategy to increase the discriminative capability. To make the method suiting for the process of large-scale datasets, we further provide Variational Bayesian solution and Gibbs sampling solution. The proposed CTV can be treated as an evolution oriented from Fisher Vector and LDA. Experiments on large-scale datasets validate the effectiveness of CTV, showing its great improvement over CNN features and great potential to other Fisher Kernel based deep features. Together with GMM based Fisher Vector and LDA based Fisher Vector, our proposed CTV constructs a more complete generative model for image semantic representations.
+
+\appendices
+\section{Derivation of CTV with Variational Bayesian solution} \label{Sec:Appendix A}
+We provide the derivation details of CTV discussed in Section \ref{Sec:Methodology}.%III.
+
+Parameters of CTM are $\Theta {\rm{ = \{ }}\mu ,\Sigma ,\beta {\rm{\} }}$. The approximated log-likelihood of images is ${L_{VB}}$:
+%%============Equation ============
+%\begin{equation} \label{Equa:appendix-log-likelihood}
+%    \begin{array}{l}
+%    \begin{aligned}
+%        {L_{VB}} = & {E_q}[\log p(\eta |\mu ,\Sigma )] + \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({z_n}|\eta )]}  + \\
+%                   & \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({w_{d,n}}|{z_n},\beta )]}  + H(q).
+%    \end{aligned}
+%    \end{array}
+%\end{equation}
+%%==================================
+%============Equation ============
+\begin{equation} \label{Equa:appendix}
+    \begin{array}{l}
+    \begin{aligned}
+       {L_{VB}} = & {E_q}[\log p(\eta |\mu ,\Sigma )] + \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({z_n}|\eta )]}  + \\
+                   & \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({w_{d,n}}|{z_n},\beta )]}  + H(q)\\
+                 = & 1/2\log |{\Sigma ^{ - 1}}| - K/2\log 2\pi  - \\
+                   & 1/2[Tr(diag({\nu ^2}){\Sigma ^{ - 1}}) + {(\lambda  - \mu )^T}{\Sigma ^{ - 1}}(\lambda  - \mu )] + \\
+                   & \sum\limits_{n = 1}^N {(\sum\limits_{i = 1}^K {\{ {\lambda _i}} {\phi _{n,i}} - {\zeta ^{ - 1}}(\sum\limits_{i = 1}^K {\exp \{ {\lambda _i} + \nu _i^2/2\} } ) + } \\
+                   & 1 - log\zeta \} ) + \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^K {{\phi _{n,i}}\log {\beta _{i,{w_n}}} + } } \\
+                   & \sum\limits_{i = 1}^K {1/2} (\log2\pi  + \log\nu _i^2 + 1) - \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^K {{\phi _{n,i}}\log } } {\phi _{n,i}},
+    \end{aligned}
+    \end{array}
+\end{equation}
+%==================================
+where $\{\lambda_i, \nu _i, \phi _{n,i}\}$ are variational parameters as pointed in Section III, and $\nu$ is a new introduced variational parameter.
+
+The derived CTV ${\varphi _{[\Theta]}} = {I_{[\Theta ]}}^{ - 1/2}{u_{[\Theta]}}$. The Fisher score ${u_{[\Theta ]}} = {{\partial L_{VB}}}/{{\partial \Theta }}$ is the partial derivative of the likelihood with respect to parameters of CTM. Fisher information matrix is the second moment of the log-likelihood. Since the expectation of Fisher score is equivalent to zero, $I_{[\Theta ]}$ is also the variance of Fisher score: ${I_{[\Theta ]}}{\rm{ = }}E[{u_{[\Theta ]}}^T{u_{[\Theta ]}}]$. Under certain regularity conditions, the Fisher information is the negative of the expectation of the second derivative with respect to $\Theta$: ${I_{[\Theta ]}} =  - E[ {{\partial ^2}L_{VB}}/{\partial {\Theta ^2}}]$. So we first compute Fisher score ${u_{[\Theta ]}}$. The terms involving hyper-parameter $\mu$ in ${L_{GS}}$ are:
+%============Equation ============
+\begin{equation} \label{Equa:appendix-mu}
+    \begin{array}{l}
+    \begin{aligned}
+        {L_{VB}^{[\mu ]} = 1/2{(\lambda  - \mu )^T}{\Sigma ^{ - 1}}(\lambda  - \mu )}.
+    \end{aligned}
+    \end{array}
+\end{equation}
+%==================================
+
+The terms involving hyper-parameter $\Sigma$ in ${L_{GS}}$ are:
+%============Equation ============
+\begin{equation} \label{Equa:appendix-sigma}
+    \begin{array}{l}
+    L_{VB}^{[\Sigma ]} = 1/2\log |{\Sigma ^{ - 1}}| + Tr(diag({\nu ^2}))\\
+    \;\;\;\;\;\;\;\;\;\;\; + {(\lambda  - \mu )^T}{\Sigma ^{ - 1}}(\lambda  - \mu ).
+    \end{array}
+    \end{equation}
+%==================================
+
+The terms involving global latent parameter $\beta$ in ${L_{GS}}$ are:
+%============Equation ============
+\begin{equation} \label{Equa:appendix-beta}
+    \begin{array}{l}
+    \begin{aligned}
+        {L_{VB}^{[\beta ]} = \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^K {{\phi _{n,i}}\log {\beta _{i,{w_n}}}} }} .
+    \end{aligned}
+    \end{array}
+\end{equation}
+%==================================
+
+%Now the Equations (\ref{Equ:u-mu})-(\ref{Equ:u-Sigma}) can be simply derived from Equations (\ref{Equa:appendix-mu})-(\ref{Equa:appendix-beta}). Following ${I_{[\Theta ]}} =  - E[ {{\partial ^2}L}/{\partial {\Theta ^2}}]$, we further compute the first order of Equations (11)-(13) for the Fisher information matrix. The results are Equations (7)-(9).
+Now the Fisher scores of Equations (4)-(6) can be simply derived from Equations (11)-(13). Following ${I_{[\Theta ]}} =  - E[ {{\partial ^2}L}/{\partial {\Theta ^2}}]$, we then compute the second order derivative of Equations (11)-(13) for the Fisher information matrix. The results are Equations (7)-(9).
+%%============Equation ============
+%\begin{equation} \label{Equa:appendix}
+%    \begin{array}{l}
+%    \begin{aligned}
+%        {L_{VB}} = & {E_q}[\log p(\eta |\mu ,\Sigma )] + \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({z_n}|\eta )]}  + \\
+%                   & \sum\limits_{n = 1}^{{N_d}} {{E_q}[\log p({w_{d,n}}|{z_n},\beta )]}  + H(q)\\
+%                 = & 1/2\log |{\Sigma ^{ - 1}}| - K/2\log 2\pi  - \\
+%                   & 1/2[Tr(diag({\nu ^2}){\Sigma ^{ - 1}}) + {(\lambda  - \mu )^T}{\Sigma ^{ - 1}}(\lambda  - \mu )] + \\
+%                   & \sum\limits_{n = 1}^N {(\sum\limits_{i = 1}^k {\{ {\lambda _i}} {\phi _{n,i}} - {\zeta ^{ - 1}}(\sum\limits_{i = 1}^k {\exp \{ {\lambda _i} + \nu _i^2/2\} } ) + } \\
+%                   & 1 - log\zeta \} ) + \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^k {{\phi _{n,i}}\log {\beta _{i,{w_n}}} + } } \\
+%                   & \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^k {{\phi _{n,i}}\log {\xi _{i,{l_n}}} + } } \\
+%                   & \sum\limits_{i = 1}^K {1/2} (log2\pi  + log\nu _i^2 + 1) - \sum\limits_{n = 1}^N {\sum\limits_{i = 1}^K {{\phi _{n,i}}\log } } {\phi _{n,i}}.
+%    \end{aligned}
+%    \end{array}
+%\end{equation}
+%%==================================
+
+%
+%
+%
+% use section* for acknowledgment
+%\section*{Acknowledgment}
+%The authors would like to thank...
+%
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+
+\bibliography{IEEEabrv,reference}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+%\begin{thebibliography}{1}%
+
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.%
+
+%\end{thebibliography}
+
+% biography section
+%
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
+%
+%% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+%
+%% insert where needed to balance the two columns on the last page with
+%% biographies
+%%\newpage
+%
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
